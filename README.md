@@ -1,5 +1,5 @@
 # File Manager
-File manager that automatically sorts all files from the specified folders in the list under the download folder into the correct sub-folders. Sub-folders that don't exist will be created automatically. Accepted file formats so far are: .pdf, .jpg, .jpeg, .png, .mp4.
+File manager that automatically sorts all files from the specified folders in the list under the download folder into the correct sub-folders. Sub-folders that don't exist will be created automatically. Accepted file formats so far are: .pdf, .jpg, .jpeg, .png, .mp4, .sh, .heic.
 
 ## Installation
 ```bash
