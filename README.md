@@ -3,7 +3,7 @@ File manager that automatically sorts all files from the specified folders in th
 
 <p align="center">
   <img style="border:1px solid red;" src="images/before.png" width="500" title="hover text"><br>
-  <p style="padding: 20px">after</p>
+  <br>
   <img style="border:1px solid green;" src="images/after.png" width="500" alt="accessibility text">
 </p>
 
