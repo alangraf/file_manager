@@ -3,6 +3,7 @@ import shutil
 from os import listdir
 from random import randint
 from os.path import isfile, join
+from extensions import FILE_EXTENSIONS
 
 
 class FileManager:
@@ -19,25 +20,32 @@ class FileManager:
 
     def cleaner(self, files: list, source_root: str, target_root: str):
         for filename in files:
-            if filename.endswith('.pdf'):
+            ext_of_file = filename.split('.')[1]
+
+            if ext_of_file in FILE_EXTENSIONS['pdf']:
                 self.create_dir_if_not_exist('PDF')
                 shutil.move(os.path.join(source_root, filename), join(target_root, 'PDF'))
                 self.logg.info("PDF file moved")
 
-            elif filename.endswith('.svg') or filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png'):
+            elif ext_of_file in FILE_EXTENSIONS['image']:
                 self.create_dir_if_not_exist('Image')
                 shutil.move(os.path.join(source_root, filename), join(target_root, 'Image'))
                 self.logg.info("Image file moved")
 
-            elif filename.endswith('.mp4'):
+            elif ext_of_file in FILE_EXTENSIONS['video']:
                 self.create_dir_if_not_exist('Video')
                 shutil.move(join(source_root, filename), join(target_root, 'Video'))
                 self.logg.info("Video file moved")
 
-            elif filename.endswith('.sh'):
+            elif ext_of_file in FILE_EXTENSIONS['shell']:
                 self.create_dir_if_not_exist('Shell')
                 shutil.move(os.path.join(source_root, filename), join(target_root, 'Shell'))
                 self.logg.info("Shell file moved")
+
+            elif ext_of_file in FILE_EXTENSIONS['word']:
+                self.create_dir_if_not_exist('Word')
+                shutil.move(os.path.join(source_root, filename), join(target_root, 'Word'))
+                self.logg.info("Doc file moved")
 
     def create_dir_if_not_exist(self, folder_name):
         if not os.path.exists(join(self.target_root, folder_name)):
