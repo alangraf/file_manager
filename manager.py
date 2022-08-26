@@ -51,8 +51,8 @@ class FileManager:
     @staticmethod
     def rename_file(filename: str, source_root: str):
         name, extension = filename.split(".")
-        new_filename = join(source_root, name + '_.' + extension)
-        rename(join(source_root, filename), new_filename)
+        new_filename = name + '_.' + extension
+        rename(join(source_root, filename), join(source_root, new_filename))
 
         return new_filename
 
