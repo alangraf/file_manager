@@ -4,5 +4,5 @@ FILE_EXTENSIONS = {
     "video": ['mp4'],
     "music": ['mp3'],
     "word": ['doc', 'docx'],
-    "image": ['svg', 'jpg', 'jpeg', 'png', 'heic', 'HEIC'],
+    "image": ['svg', 'webp', 'jpg', 'jpeg', 'png', 'heic', 'HEIC'],
 }

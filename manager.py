@@ -18,15 +18,22 @@ class FileManager:
         only_files = [f for f in listdir(root_dir) if isfile(join(root_dir, f)) and not f.startswith('.') and not f.startswith('~')]
         return only_files
 
+    def get_file_extension(self, filename: str):
+        index = [i for i, c in enumerate(filename) if c == '.'][-1]
+        return filename[index + 1:]
+
     def cleaner(self, files: list, source_root: str):
         for filename in files:
-            ext_of_file = filename.split('.')[1]
+            ext_of_file = self.get_file_extension(filename)
 
             if ext_of_file in FILE_EXTENSIONS['pdf']:
                 self.move_file_to_folder(source_root, filename, 'PDF')
 
             elif ext_of_file in FILE_EXTENSIONS['image']:
                 self.move_file_to_folder(source_root, filename, 'Image')
+
+            elif ext_of_file in FILE_EXTENSIONS['music']:
+                self.move_file_to_folder(source_root, filename, 'Music')
 
             elif ext_of_file in FILE_EXTENSIONS['video']:
                 self.move_file_to_folder(source_root, filename, 'Video')
@@ -38,6 +45,12 @@ class FileManager:
                 self.move_file_to_folder(source_root, filename, 'Word')
 
     def move_file_to_folder(self, source_root: str, filename: str, foldername: str):
+        """
+        Check if target folder already exists. If not, create it.
+        Check if file already exists in target folder, if not move the file to the folder,
+        if it exists, rename the source file and move to target folder.
+        """
+
         self.create_dir_if_not_exist(foldername)
 
         if not self.check_if_filename_exists(filename, join(self.target_root, foldername)):
